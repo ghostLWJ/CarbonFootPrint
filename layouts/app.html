@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/app.css">
+    <base href="/">
+    <title>CarbonFootprint</title>
+  </head>
+  <body ng-app = "app" ng-controller = "ApplicationCtrl">
+    <nav role="navigation" id="header" class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header"><a href="/" class="navbar-brand logo">CarbonFootprint</a></div>
+        <div id="navigation" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">         
+            <li ng-if = "isAuthorized(userRoles.user)"><a href="/#/menu">線上訂購</a></li>
+            <li ng-if = "isAuthorized(userRoles.user)"><a href="/#/personal">個人資訊</a></li>
+            <li ng-if = "isAuthorized(userRoles.admin)"><a href="/#/menulist">菜單資訊</a></li> 
+            <li ng-if = "isAuthorized(userRoles.admin)"><a href="/#/edit">上傳新菜單</a></li>
+            <li ng-if = "isAuthorized(userRoles.admin)"><a href="/#/order">點餐資訊</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+          	<li ng-if = "!currentUser"><a href="/#/register">註冊</a></li>
+            <li ng-if = "!currentUser"><a href="/#/login">登入</a></li>
+            <li ng-if = "currentUser"><a>{{currentUser.username}}  您好</a></li>
+            <li ng-if = "currentUser"><a ng-click = 'logout()'>登出</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div ng-view></div>
+    <div class="footer text-center">
+      <a href="/#">CarbonFootprint</a>
+        footer
+    </div>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.js"></script>
+    <!-- <script src = '/angular-local-storage.min.js'></script> -->
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.2.2/angular-local-storage.min.js"></script>
+    <script src = "https://maps.google.com/maps/api/js?libraries=geometry&amp;sensor=false"></script>
+    <script src = "/angular-google-maps.min.js"></script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.0/lodash.min.js"></script>
+    <script src = '/app.js'></script>
+  </body>
+</html>

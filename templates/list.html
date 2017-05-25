@@ -1,0 +1,70 @@
+<div class="jumbotron text-center">
+  <div class="container-fluid">
+    <h1>CarbonFootprint - 確認訂餐</h1>
+    <p>&nbsp</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div>
+        <p>&nbsp</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+    <table class="table table-hover" ng-show="cart.length">
+        <caption class="text-center">
+        </caption>
+        <thead>
+            <tr>
+                <th>商品編號</th>
+                <th>商品名稱</th>
+                <th>購買數量</th>
+                <th>商品單價</th>
+                <th>商品總價</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in cart">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td class="row col-lg-2">
+                    <div class="input-group col-lg-8">
+                        <p class="form-control-static">{{item.quantity}}</p>
+                    </div>
+                </td>
+                <td>{{item.price | number:2}}</td>
+                <td>{{item.price * item.quantity | number:2}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" ng-click="remove(item.id)">移除</button>
+                </td>
+            </tr>
+            <tr>
+                <th colspan = "6">備註</th>
+            </tr>
+            <tr>
+                <td colspan = "6"><input class = "form-control" name = "mark" type = "text"  ng-model = "mark" placeholder="備註"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <strong>購買總數:{{totalQuantity()}}</strong>
+                </td>
+                <td colspan="2">
+                    <strong>合計金額:{{totalPrice()}}</strong>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" ng-click="removeAll()">清空購物車</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success" ng-click = "order()">送出</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="alert alert-warning alert-dismissible text-center" role="alert"  ng-show="!cart.length">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>您的購物車為空！</strong>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="jumbotron text-center">
+  <div class="container-fluid">
+    <h1>CarbonFootprint - 登入</h1>
+    <p>&nbsp</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div>
+        <p>&nbsp</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class = "container">
+	<form name = "loginForm" ng-submit = "login(useraccount, password)">
+		<div class = "form-group">
+			<label>帳號</label>
+			<input class = "form-control" type = "text" ng-model = "useraccount" required>
+		</div>
+		<div class = "form-group">
+			<label>密碼</label>
+			<input class = "form-control" type = "password" ng-model = "password" required>
+		</div>
+		<input class = "btn btn-success btn-lg btn-block" type = "submit" value = "登入" ng-disabled = "loginForm.$invalid">
+	</form>
+</div>

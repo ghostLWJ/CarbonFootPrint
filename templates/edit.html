@@ -1,0 +1,59 @@
+<div class="jumbotron text-center">
+  <div class="container-fluid">
+    <h1>CarbonFootprint - 上傳新菜品</h1>
+    <p>&nbsp</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div>
+        <p>&nbsp</p>
+      </div>
+    </div>
+  </div>
+</div>
+<style type="text/css">
+  .btn-file {
+      position: relative;
+      overflow: hidden;
+  }
+  .btn-file input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-width: 100%;
+      min-height: 100%;
+      font-size: 100px;
+      text-align: right;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      outline: none;
+      background: white;
+      cursor: inherit;
+      display: block;
+  }
+  input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+  }
+</style>
+<div class = "container">
+  <div class="alert alert-danger" ng-show = "success" ng-bind = "success"></div>
+  <form name = "uploadForm" method = "post" action = "/api/menu"  enctype="multipart/form-data">
+      <div style="position:relative;">
+    <a class='btn btn-primary' href='javascript:;'>
+      <input type="file" name = "image" ng-model = "image">
+    </a>
+    &nbsp;
+  </div>
+    <div class = "form-group">
+      <label>菜品名稱</label>
+      <input class = "form-control" name = "name" type = "text"  ng-model = "name" placeholder="菜品名稱" required>      
+    </div>
+    <div class = "form-group">
+      <label>單價</label>
+      <input class = "form-control" name = "price" type = "text"  ng-model = "price" placeholder="單價" required>      
+    </div>
+    <input class = "btn btn-success btn-lg btn-block" type = "submit" value = "上傳" ng-disabled = "uploadForm.$invalid">
+  </form>
+</div>

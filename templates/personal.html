@@ -1,0 +1,88 @@
+<div class="jumbotron text-center">
+  <div class="container-fluid">
+    <h1>CarbonFootprint - 個人資訊</h1>
+    <p>&nbsp</p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div>
+        <p>&nbsp</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class = "container">
+    <ul class="list-group">
+        <li class="list-group-item"><span class="badge">{{currentUser.point}}</span> 目前點數：</li> 
+    </ul>
+    <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="showHistoryPoint()">歷史點數足跡</button>
+    <span ng-show = "showPoint">
+      <ul class="list-group" ng-repeat = "(key, value) in date track by $index">
+        <li class="list-group-item" ng-click = "change(key)"><span class="badge">點擊查看</span> {{date[key] | date : 'yyyy-MM-dd'}}</li> 
+      </ul>
+    </span>
+    <div id="map_canvas"> 
+      <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
+        <ui-gmap-polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible' geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'>
+        </ui-gmap-polyline>
+      </ui-gmap-google-map>
+    </div>
+    <br/>
+    <br/>
+    <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="showHistoryOrder()">歷史點餐紀錄</button>
+    <br/>
+    <span ng-show = "showOrder">
+      <ul class = "list-group">
+        <li class = "list-group-item" ng-show="orders.length" ng-repeat = "order in orders | filter:search:strict">
+        <table class="table table-hover">
+          <caption class="text-center">
+          </caption>
+          <thead>
+            <tr><h4>訂單編號：{{order.id}}</h4></tr>
+            <tr><th><h3>{{order.date | date : 'yyyy-MM-dd HH:mm:ss'}}</h3><h4>Phone: {{order.phone}}</h4></th></tr>
+            <tr>
+            <th>商品編號</th>
+            <th>商品名稱</th>
+            <th>購買數量</th>
+            <th>商品單價</th>
+            <th>商品總價</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="orderFoot in order.order">
+              <td>{{orderFoot.id}}</td>
+              <td>{{orderFoot.name}}</td>
+              <td class="row col-lg-2">
+                <div class="input-group col-lg-8">
+                <p class="form-control-static">{{orderFoot.quantity}}</p>
+                </div>
+              </td>
+              <td class="row col-lg-2">
+                <div class="input-group col-lg-8">
+                <p class="form-control-static">{{orderFoot.price}}</p>
+                </div>
+              </td>
+              <td class="row col-lg-2">
+                <div class="input-group col-lg-8">
+                <p class="form-control-static">{{ orderFoot.quantity * orderFoot.price }}</p>
+                </div>
+              </td>
+            </tr>
+            <tr>
+                <th colspan = "6">備註</th>
+            </tr>
+            <tr>
+                <th colspan = "6">{{order.mark}}</th>
+            </tr>
+            <tr>
+            <td colspan="5">
+            <strong><h4>合計金額:{{order.cashtotal}}</h4></strong>
+            </td>
+            </tr>
+          </tbody>
+        </table>
+        </li>
+      </ul>
+    </span>
+
+</div>

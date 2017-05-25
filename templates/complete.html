@@ -1,0 +1,79 @@
+<div class="jumbotron text-center">
+  <div class="container-fluid">
+    <h1>CarbonFootprint - 完成訂餐</h1>
+    <p>&nbsp</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div>
+        <p>&nbsp</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row featurette text-center">
+    <div class="col-lg-12">
+      <h3>您已完成訂餐動作，請於{{timePlus | date : 'yyyy-MM-dd HH:mm'}}後至內湖門市取餐</h3>
+      <div class="lead">
+        <div class="highlight">
+          <pre><code class="language-javascript" data-lang="javascript"><span class="nx"></span></span></code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class = "list-group">
+   <li class = "list-group-item">
+   <table class="table table-hover">
+        <caption class="text-center">
+        </caption>
+        <thead>
+            <tr><h4>訂單編號：{{personalOrder.id}}</h4></tr>
+            <tr><th><h3>{{personalOrder.date | date : 'yyyy-MM-dd HH:mm:ss'}}@{{ personalOrder.useraccount }}@{{ personalOrder.username }}</h3><h4>Phone: {{personalOrder.phone}}</h4></th></tr>
+            <tr>
+                <th>商品編號</th>
+                <th>商品名稱</th>
+                <th>購買數量</th>
+                <th>商品單價</th>
+                <th>商品總價</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="orderFoot in personalOrder.order">
+                <td>{{orderFoot.id}}</td>
+                <td>{{orderFoot.name}}</td>
+                <td class="row col-lg-2">
+                    <div class="input-group col-lg-8">
+                        <p class="form-control-static">{{orderFoot.quantity}}</p>
+                    </div>
+                </td>
+                <td class="row col-lg-2">
+                    <div class="input-group col-lg-8">
+                        <p class="form-control-static">{{orderFoot.price}}</p>
+                    </div>
+                </td>
+                 <td class="row col-lg-2">
+                    <div class="input-group col-lg-8">
+                        <p class="form-control-static">{{ orderFoot.quantity * orderFoot.price }}</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th colspan = "6">備註</th>
+            </tr>
+            <tr>
+                <th colspan = "6">{{personalOrder.mark}}</th>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <strong><h4>合計金額:{{personalOrder.cashtotal}}</h4></strong>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,106 @@
+<div class="jumbotron text-center">
+  <div class="container-fluid">
+    <h1>CarbonFootprint - 結帳</h1>
+    <p>&nbsp</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div>
+        <p>&nbsp</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  input[type="text"] {
+     font-size: 40px;
+     height: 80px;
+  }
+  
+  button[type="button"]{
+    font-size: 40px;
+    height: 80px;
+    
+  }
+
+  .col-sm-2{
+    padding: 0px;
+  }
+
+  .col-sm-4{
+    padding: 0px;
+  }
+</style>
+
+<div class="container">
+  <div class="row"  ng-show = "showCash">
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "add(1)">1</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "add(2)">2</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "add(3)">3</button></div>
+    <div class="col-sm-2"><h2>&nbsp&nbsp&nbsp&nbsp<small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp總計</small></h2></div>
+    <div class="col-sm-4"><input type = "text" class = "form-control" ng-model = "order.cashtotal" readonly></div>
+  </div>
+
+  <div class="row" ng-show = "showCash">
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "add(4)">4</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "add(5)">5</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "add(6)">6</button></div>
+    <div class="col-sm-2"><h2>&nbsp&nbsp&nbsp&nbsp<small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp收您</small></h2></div>
+    <div class="col-sm-4"><input type = "text" class = "form-control" ng-model = "save" readonly></div>
+  </div>
+
+  <div class="row"ng-show = "showCash">
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "add(7)">7</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "add(8)">8</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "add(9)">9</button></div>
+    <div class="col-sm-2"><h2>&nbsp&nbsp&nbsp&nbsp<small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp找零</small></h2></div>
+    <div class="col-sm-4"><input type = "text" class = "form-control" ng-model = "change" readonly></div>
+  </div>
+
+  <div class="row" ng-show = "showCash">
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "add(-1)">C</button></div>
+    <div class="col-sm-4"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "add(0)">0</button></div>
+
+    <div class="col-sm-2"></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "now()"><span ng-bind = "showText"></span></button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "Checked(order.id)">結帳</button></div>
+  </div>
+
+  
+
+  <div class="row"  ng-show = "showDiscount">
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "addD(1)">1</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "addD(2)">2</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "addD(3)">3</button></div>
+    <div class="col-sm-2" ng-show = "showDiscount"><h2>&nbsp&nbsp&nbsp&nbsp<small>&nbsp&nbsp&nbsp&nbsp&nbsp可折扣點數</small></h2></div>
+    <div class="col-sm-4" ng-show = "showDiscount"><input type = "text" class = "form-control" ng-model = "discount" readonly></div>
+  </div>
+
+  <div class="row" ng-show = "showDiscount">
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "addD(4)">4</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "addD(5)">5</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "addD(6)">6</button></div>
+    <div class="col-sm-2"><h2>&nbsp&nbsp&nbsp&nbsp<small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp抵扣點數</small></h2></div>
+    <div class="col-sm-4"><input type = "text" class = "form-control" ng-model = "saveD" readonly></div>
+  </div>
+
+  <div class="row"ng-show = "showDiscount">
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "addD(7)">7</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "addD(8)">8</button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "addD(9)">9</button></div>
+    <div class="col-sm-2"><h2>&nbsp&nbsp&nbsp&nbsp<small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp換算折抵金額</small></h2></div>
+    <div class="col-sm-4"><input type = "text" class = "form-control" ng-model = "changeD" readonly></div>
+  </div>
+
+  <div class="row" ng-show = "showDiscount">
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "addD(-1)">C</button></div>
+    <div class="col-sm-4"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "addD(0)">0</button></div>
+
+    <div class="col-sm-2"><h2>&nbsp&nbsp&nbsp&nbsp<small>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp可用點數</small></h2></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block"><span ng-bind = "user.point"></span></button></div>
+    <div class="col-sm-2"><button type="button" class="btn btn-default btn-lg  btn-block" ng-click = "now()"><span ng-bind = "showText"></span></button></div>
+  </div>
+
+</div>

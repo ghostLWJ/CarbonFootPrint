@@ -1,0 +1,31 @@
+<div class="jumbotron text-center">
+  <div class="container-fluid">
+    <h1>CarbonFootprint - 菜單</h1>
+    <p>&nbsp</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div>
+        <p>&nbsp</p>
+      </div>
+    </div>
+  </div>
+</div>
+<style type="text/css">
+    .col-lg-4{
+        margin-left:auto;
+        margin-right:auto;
+    }
+</style>
+<div class="container">
+    <div class="row">  
+        <div  ng-repeat = "item in cart" class="col-xs-4 text-center">            
+            <h4><span ng-bind = "item.name"></span><br/>NT$<span  ng-bind = "item.price"></span></h4>
+            <img ng-src = "/img/{{item.imgsrc}}.jpg" width="100" height="100" class="img-circle">
+            <div class="input-group col-lg-4">
+            </div>
+            <br/>
+        </div>  
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="jumbotron text-center">
+  <div class="container-fluid">
+    <h1>CarbonFootprint - 點餐資訊</h1>
+    <p>CONTENT</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div>
+        <p>TEST</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class = "container">
+  <h1>Recent Orders</h1>
+  <div><label>Search Phone: <input ng-model="search.phone"></label></div>
+  <ul class = "list-group">
+   <li class = "list-group-item" ng-show="orders.length" ng-repeat = "order in orders | filter:search:strict">
+   <table class="table table-hover">
+        <caption class="text-center">
+        </caption>
+        <thead>
+            <tr><h4>訂單編號：{{order.id}}</h4></tr>
+            <tr><th><h3>{{order.date | date : 'yyyy-MM-dd HH:mm:ss'}}@{{ order.useraccount }}@{{ order.username }}</h3><h4>Phone: {{order.phone}}</h4></th></tr>
+            <tr>
+                <th>商品編號</th>
+                <th>商品名稱</th>
+                <th>購買數量</th>
+                <th>商品單價</th>
+                <th>商品總價</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="orderFoot in order.order">
+                <td>{{orderFoot.id}}</td>
+                <td>{{orderFoot.name}}</td>
+                <td class="row col-lg-2">
+                    <div class="input-group col-lg-8">
+                        <p class="form-control-static">{{orderFoot.quantity}}</p>
+                    </div>
+                </td>
+                <td class="row col-lg-2">
+                    <div class="input-group col-lg-8">
+                        <p class="form-control-static">{{orderFoot.price}}</p>
+                    </div>
+                </td>
+                 <td class="row col-lg-2">
+                    <div class="input-group col-lg-8">
+                        <p class="form-control-static">{{ orderFoot.quantity * orderFoot.price }}</p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th colspan = "6">備註</th>
+            </tr>
+            <tr>
+                <th colspan = "6">{{order.mark}}</th>
+            </tr>
+            <tr>
+                <td>
+                    <strong><h4>合計金額:{{order.cashtotal}}</h4></strong>
+                </td>
+                <td>
+                    &nbsp
+                </td>
+                <td colspan="3">
+                    <button type="button" class="btn btn-success btn-lg btn-block" ng-click = "checkout(order.id)">結帳</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </li>
+  </ul>
+</div>

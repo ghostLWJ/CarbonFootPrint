@@ -1,0 +1,148 @@
+<div class="jumbotron text-center">
+  <div class="container-fluid">
+    <h1>CarbonFootprint - 註冊</h1>
+    <p>&nbsp</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div>
+        <p>&nbsp</p>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+	.email.ng-valid{
+		border-color: lightgreen;
+		border-width: 2px;
+	}
+	.email.ng-invalid{
+		border-color: DarkSalmon;
+		border-width: 2px;
+	}
+	.username.ng-valid{
+		border-color: lightgreen;
+		border-width: 2px;
+	}
+	.username.ng-invalid{
+		border-color: DarkSalmon;
+		border-width: 2px;
+	}
+	.useraccount.ng-valid{
+		border-color: lightgreen;
+		border-width: 2px;
+	}
+	.useraccount.ng-invalid{
+		border-color: DarkSalmon;
+		border-width: 2px;
+	}
+	.password.ng-valid{
+		border-color: lightgreen;
+		border-width: 2px;
+	}
+	.password.ng-invalid{
+		border-color: DarkSalmon;
+		border-width: 2px;
+	}
+	.passwordck.ng-valid{
+		border-color: lightgreen;
+		border-width: 2px;
+	}
+	.passwordck.ng-invalid{
+		border-color: DarkSalmon;
+		border-width: 2px;
+	}
+	.born.ng-valid{
+		border-color: lightgreen;
+		border-width: 2px;
+	}
+	.born.ng-invalid{
+		border-color: DarkSalmon;
+		border-width: 2px;
+	}
+	.address.ng-valid{
+		border-color: lightgreen;
+		border-width: 2px;
+	}
+	.address.ng-invalid{
+		border-color: DarkSalmon;
+		border-width: 2px;
+	}
+	.phone.ng-valid{
+		border-color: lightgreen;
+		border-width: 2px;
+	}
+	.phone.ng-invalid{
+		border-color: DarkSalmon;
+		border-width: 2px;
+	}
+</style>
+<div class = "container">
+	<form name = "registerForm" ng-submit = "register(username, useraccount, password, sex, phone, email, address, born)">
+		<div class="alert alert-danger" ng-show = "err" ng-bind = "err"></div>
+		<div class = "form-group has-feedback" ng-class="{'has-success': registerForm.email.$valid, 'has-error': registerForm.email.$dirty && registerForm.email.$invalid }">
+			<label>Email</label>
+			<input class = "form-control email" name = "email" type = "email" ng-model = "email" placeholder="電子郵件地址" required>
+			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show = "registerForm.email.$valid"></span>
+			<span class="glyphicon glyphicon-remove form-control-feedback" ng-show = "registerForm.email.$dirty && registerForm.email.$invalid"></span>
+		</div>
+		<div class = "form-group has-feedback" ng-class="{'has-success': registerForm.username.$valid, 'has-error': registerForm.username.$invalid }">
+			<label>姓名</label>
+			<input class = "form-control username" name = "username" type = "text"  ng-model = "username" placeholder="姓名" required>
+			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show = "registerForm.username.$valid"></span>
+			<span class="glyphicon glyphicon-remove form-control-feedback" ng-show = "registerForm.username.$dirty && registerForm.username.$invalid"></span>
+		</div>
+		<div class = "form-group">
+			<label>性別</label>
+			<label class="radio-inline">
+				<input type="radio" ng-model = "sex" value="male" ng-required="!sex"> 男
+			</label>
+			<label class="radio-inline">
+				<input type="radio" ng-model = "sex" value="female" ng-required="!sex"> 女
+			</label>
+		</div>
+		<div class = "form-group has-feedback" ng-class="{'has-success': registerForm.useraccount.$valid, 'has-error': registerForm.useraccount.$invalid }">
+			<label>帳號</label>
+			<input class = "form-control useraccount" name = "useraccount" type = "text" ng-model = "useraccount" placeholder="帳號" required>
+			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show = "registerForm.useraccount.$valid"></span>
+			<span class="glyphicon glyphicon-remove form-control-feedback" ng-show = "registerForm.useraccount.$dirty && registerForm.useraccount.$invalid"></span>
+		</div>
+		<div class = "form-group has-feedback" ng-class="{'has-success': registerForm.password.$valid, 'has-error': registerForm.password.$invalid }">
+			<label>密碼</label>
+			<input class = "form-control password" name = "password" type = "password" ng-model = "password" placeholder="密碼" required>
+			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show = "registerForm.password.$valid"></span>
+			<span class="glyphicon glyphicon-remove form-control-feedback" ng-show = "registerForm.password.$dirty && registerForm.password.$invalid"></span>
+		</div>
+		<div class = "form-group has-feedback" ng-class="{'has-success': registerForm.passwordck.$valid, 'has-error': registerForm.passwordck.$invalid }">
+			<label>確認密碼</label>
+			<input class = "form-control passwordck" name = "passwordck" type = "password" ng-model = "passwordck" password-match = "password" placeholder="重新輸入密碼" required>
+			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show = "registerForm.passwordck.$valid"></span>
+			<span class="glyphicon glyphicon-remove form-control-feedback" ng-show = "registerForm.passwordck.$dirty && registerForm.passwordck.$invalid"></span>
+		</div>
+		<div class = "form-group has-feedback" ng-class="{'has-success': registerForm.born.$valid, 'has-error': registerForm.born.$invalid }">
+			<label>生日</label>
+			<input class = "form-control born" name = "born" type = "date" ng-model = "born" placeholder="生日" required>
+			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show = "registerForm.born.$valid"></span>
+			<span class="glyphicon glyphicon-remove form-control-feedback" ng-show = "registerForm.born.$dirty && registerForm.born.$invalid"></span>
+		</div>
+		<div class = "form-group has-feedback" ng-class="{'has-success': registerForm.address.$valid, 'has-error': registerForm.address.$invalid }">
+			<label>通訊地址</label>
+			<input class = "form-control address" name = "address" type = "text" ng-model = "address" placeholder="通訊地址" required>
+			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show = "registerForm.address.$valid"></span>
+			<span class="glyphicon glyphicon-remove form-control-feedback" ng-show = "registerForm.address.$dirty && registerForm.address.$invalid"></span>
+		</div>
+		<div class = "form-group has-feedback" ng-class="{'has-success': registerForm.phone.$valid, 'has-error': registerForm.phone.$invalid }">
+			<label>手機號碼</label>
+			<input class = "form-control phone" name = "phone" type = "text" ng-model = "phone" ng-pattern = "/^09[0-9]{8}$/" placeholder="手機號碼" required ng-minlength = "10" ng-maxlength = "10">
+			<span class="glyphicon glyphicon-ok form-control-feedback" ng-show = "registerForm.phone.$valid"></span>
+			<span class="glyphicon glyphicon-remove form-control-feedback" ng-show = "registerForm.phone.$dirty && registerForm.phone.$invalid"></span>
+		</div>
+		<div class="checkbox">
+		    <label>
+		      <input type = "checkbox" ng-model = "checkbox_checked" required>我已閱讀並同意<a href="">【會員規範】</a>及<a href="">【隱私權條款】</a>。
+		    </label>
+		 </div>
+		<input class = "btn btn-success btn-lg btn-block" type = "submit" value = "註冊" ng-disabled = "registerForm.$invalid">
+	</form>
+</div>
