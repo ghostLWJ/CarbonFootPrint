@@ -2,6 +2,7 @@
 University Topic Practice
 
 ## Requirements
+
 * [NodeJs](http://nodejs.org) >= 0.10.36
 * [mongodb](http://mongodb.org)
 
@@ -18,3 +19,8 @@ then
 ```sh
 gulp dev
 ```
+
+## How to use Admin account
+
+1. First create your account
+2. Then use mongodb shell(or use MongoDB GUI manager), `use carbonfootprint` and update `users` collections account.auth change to `admin`
