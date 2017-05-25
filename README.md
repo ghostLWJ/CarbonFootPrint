@@ -20,7 +20,10 @@ then
 gulp dev
 ```
 
+## Websocket
+**NOTE:** Websocket only working for `HTTPS` protocol.
+
 ## How to use Admin account
 
 1. First create your account
-2. Then use mongodb shell(or use MongoDB GUI manager), `use carbonfootprint` and update `users` collections account.auth change to `admin`
+2. Then use mongodb shell(or use MongoDB GUI manager), `use carbonfootprint` and update `users` collections account.auth change to `admin`.
